@@ -123,10 +123,10 @@ if (!empty($_POST['salarie'])){
       
     
       </td>
-      <td align="center"><?=$liste[$i]['Recup']?></td>
-      <td align="center"><?=$liste[$i]['HS_Maj']?></td>
-      <td align="center"><?=$liste[$i]['JS']?></td>
-      <td align="center"><?=$liste[$i]['heureAPayer']?></td>
+      <td style="text-align:center;"><?=$liste[$i]['Recup']?></td>
+      <td style="text-align:center;"><?=$liste[$i]['HS_Maj']?></td>
+      <td style="text-align:center;"><?=$liste[$i]['JS']?></td>
+      <td style="text-align:center;"><?=$liste[$i]['heureAPayer']?></td>
       <td><?=$liste[$i]['Commentaire']?></td>
       <td><?php
 

@@ -19,23 +19,6 @@ if ($droit == 3){
 
 }
 
-/* Cette fonction a été rajouté dans l'include, elle pourra être retiré d'ici après test (4/07/22)
-function getAPayer($pdo) {
-
-  $sql = "SELECT *
-          FROM stock_hs INNER JOIN salaries ON salaries.Matricule = stock_hs.Matricule 
-          WHERE APayer = 1 
-          AND Payee = 0
-          ORDER BY Nom, Date";
-  $stmt = $pdo->prepare($sql);
- 
-  $stmt->execute();
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  return $result;
-
-
-}*/
-
 ?>
 
 <body class="bodyperso">
