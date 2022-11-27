@@ -18,25 +18,23 @@ if (count($_POST)>0){
 
 $idheure =  $_POST['idheure'];       
 $newDate = $_POST['date'];
-$newHR = $_POST['recup'];
-$newHS = $_POST['hsupp'];
-$newJS = $_POST['JS'];
+$duree = $_POST['duree'];
 $newCommentaire = $_POST['comment']." || Enregistrement Modifié le ".$maintenant." à ".$maintenantH;
 
 
 
-        function modifieEntree($newDate,$newHR,$newHS,$newJS,$newCommentaire,$idheure,$pdo){
-                $sql ="UPDATE stock_hs set Date = :date, Recup = :newHR, HS_Maj = :newHS, JS = :newJS, Commentaire = :newCommentaire 
-                WHERE ID_enr = :idheure";
-                $params=['date'=> $newDate,'newHR'=>$newHR,'newHS'=>$newHS,'newJS'=>$newJS,'newCommentaire'=>$newCommentaire,'idheure' => $idheure];
+        function modifieEntree($newDate,$duree,$newCommentaire,$idheure,$pdo){
+                $sql ="UPDATE semaineencours set date_evenement = :newDate,temps = :duree, commentaire = :newCommentaire 
+                WHERE id = :idheure";
+                $params=['newDate'=> $newDate,'duree'=>$duree,'newCommentaire'=>$newCommentaire,'idheure' => $idheure];
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute($params);
                 $result = $stmt->fetchall(PDO :: FETCH_ASSOC);
         
         }
 
-        $modifieHeure = modifieEntree($newDate,$newHR,$newHS,$newJS,$newCommentaire,$idheure,$pdo);
-        header('location:accueil.php');
+        $modifieHeure = modifieEntree($newDate,$duree,$newCommentaire,$idheure,$pdo);
+        header('location:cloture.php');
 
 }
 
@@ -51,36 +49,25 @@ $newCommentaire = $_POST['comment']." || Enregistrement Modifié le ".$maintenan
 
                             <div class="containerperso">   
                           
-                            <input type="hidden" class="form-control" name="idheure" id="idheure" value="<?=$heureACorriger[0]['ID_enr']?>">
+                            <input type="hidden" class="form-control" name="idheure" id="idheure" value="<?=$heureACorriger[0]['id']?>">
                             </div>
 
 
                             <div class="containerperso">   
                             <label for="dateenregistree">Date :</label>
-                            <input required type="date" class="form-control" name="date" id="dateenregistree" value="<?=$heureACorriger[0]['Date']?>">
-                            </div>
-                           
+                            <input required type="date" class="form-control" name="date" id="dateenregistree" value="<?=$heureACorriger[0]['date_evenement']?>">
+                            </div>                           
                             <div class="containerperso">
-                            <label for="recup">Contingent de récupération (1 pou 1) :</label>
+                            <label for="recup">Durée :</label>
                             <p style="font-size:0.8em;"><i>valeur inscrite en décimale : 15mn = 0,25 | 30mn = 0,50 | 45mn = 0,75.</i></p>
-                            <input required type="number" class="form-control" step="0.25" name="recup" id="recup" value="<?=$heureACorriger[0]['Recup']?>">
-                            </div>
-                            
-                            <div class="containerperso">
-                            <label for="JS">Contingent d'heures supplémentaires :</label>
-                            <p style="font-size:0.8em;"><i>valeur inscrite en décimale : 15mn = 0,25 | 30mn = 0,50 | 45mn = 0,75. Ne les majorez pas.</i></p>
-                            <input required type="number" class="form-control"step="0.25" name="hsupp" id="hsupp" value="<?=$heureACorriger[0]['HS_Maj']/1.25?>">
-                            </div>
-                            <div class="containerperso">
-                            <label for="hsupp">Journée de solidarité :</label>
-                            <input required type="number" class="form-control" step="0.25"name="JS" id="JS" value="<?=$heureACorriger[0]['JS']?>">
+                            <input required type="number" class="form-control" step="0.25" name="duree" id="duree" value="<?=$heureACorriger[0]['temps']?>">
                             </div>
                             <div class="containerperso">
                             <label for="comment">Commentaire (yc tranche horaire)</label>
-                            <input required type="text" class="form-control" name="comment" id="comment" value="<?=$heureACorriger[0]['Commentaire']?>">
+                            <input required type="text" class="form-control" name="comment" id="comment" value="<?=$heureACorriger[0]['commentaire']?>">
                             </div>
                             <div class="containerperso">
-                            <button class="btn btn-danger" type="submit">MODIFIER</button>
+                            <button class="buttonnormal" type="submit">MODIFIER</button>
                             </div>
 
                             

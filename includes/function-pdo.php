@@ -87,8 +87,8 @@
       function getHeure($idheure,$pdo){
 
         $sql = "SELECT *
-                FROM stock_hs 
-                WHERE ID_enr = :idheure";
+                FROM semaineencours 
+                WHERE id = :idheure";
         $stmt = $pdo->prepare($sql);
         $params = ['idheure' => $idheure];
         $stmt->execute($params);

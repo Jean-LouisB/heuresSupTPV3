@@ -56,8 +56,7 @@ if ($niveauUserConnecte > 2){//affiche cette partie si l'utilisateur est adminis
       <li><a class="nav-link" style="color: blue" href="adminApayer.php">A payer</a></li>
       <li><hr class="dropdown-divider">Paramètres :</li>
       <li><a class="nav-link" style="color: blue" href="adminDefiniBornes.php">Dates</a></li>
-      <li><a class="nav-link" style="color: red" href="export.php">Exports</a></li>
-      <li><a class="nav-link" style="color: blue" href="adminRelance.php">Relance</a></li>
+      <li><a class="nav-link" style="color: blue" href="export.php">Exports</a></li>
       <li><a class="nav-link" style="color: blue" href="adminptitvieux.php">RAZ J.S.</a></li>
       <li><hr class="dropdown-divider">Utilisateurs :</li>
       <li><a class="nav-link" style="color: blue" href="userList.php">Gestion</a></li>

@@ -72,6 +72,7 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
                   <th scope="col" class="thperso">Date</th>
                   <th scope="col" class="thperso">Durée</th>
                   <th scope="col" class="thperso">Commentaire</th>
+                  <th scope="col" class="thperso"></th>
                   
 
                   
@@ -93,6 +94,7 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
                   <td class="tdperso"><?=$dateEvenement;?>
                   <td class="tdperso"><?=afficheHeureMinute($listeHeures[$i]['temps']);?></td>
                   <td class="tdperso"><?=$listeHeures[$i]['commentaire'];?></td>
+                  <td class="tdperso"><a href="modifieheure.php?id=<?=$listeHeures[$i]['id'];?>"><button class="buttonnormal">Modifier</button></a></td>
                   
                 
 
