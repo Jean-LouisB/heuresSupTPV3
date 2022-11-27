@@ -31,6 +31,7 @@ function addHeureSemaine($Matricule,$affecJS,$affecHR,$affecHS,$aPayer,$date_Sys
 
 $validerHeure = addHeureSemaine($Matricule,$affecJS,$affecHR,$affecHS,$aPayer,$date_Sys,$commentaire,$pdo);
 
+
 function archiveHeureSemaine($Matricule,$pdo){
 
                         $sql = "UPDATE semaineencours

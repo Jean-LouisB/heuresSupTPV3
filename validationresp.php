@@ -13,12 +13,12 @@ $matriculeResponsable = $user[0]['Matricule'];
 //Pour définir le salarié filtré
 $listesalaries = getSalarieService($matriculeResponsable,$pdo);
 if (isset($_POST['salarie'])){
-  $Matricule = $_POST['salarie'];
-}
+  $Matr = $_POST['salarie'];
 $valide = 2;
-$listeHeures = GetAValiderV2($Matricule,$pdo);
+$listeHeures = GetAValiderV2($Matr,$pdo);
 $listeHeuresSemaine = heuresEnCoursResponsable($Matricule,$pdo);
 $totalHeures = heuresEnCoursTotal($Matricule,$valide,$pdo);
+}
 
 ?>
 

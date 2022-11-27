@@ -18,23 +18,22 @@ if ($droit == 3){
   echo "Vous n'avez pas les droits";
 
 }
-
+/* echo "<pre>";
+print_r($liste);
+echo "</pre>"; */
 ?>
 
 <body class="bodyperso">
 
-    <div class="container">
-
-          <table class="table">
-            <thead>
+    <div class="containerperso">
+<h2>Liste des heures à payer pour le report dans la paye.</h2>
+          <table class="tableperso">
+            <thead class="thead">
               <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Date</th>
-                <th scope="col">H. à récupérer (1pour1)</th>
-                <th scope="col">H.supp. (non majorée)</th>
-                <th scope="col">Solidarité</th>
-                <th scope="col">Justification</th>
-                <th scope="col"></th>
+                <th class="thperso" scope="col">Nom</th>
+                <th class="thperso" scope="col">Date</th>
+                <th class="thperso" scope="col">Nombre d'heure<br>(non majorée)</th>
+                <th class="thperso" scope="col"></th>
 
               </tr>
             </thead>
@@ -49,13 +48,10 @@ if ($droit == 3){
           
             <tr>
 
-                <td><?=$liste[$i]['Nom']?></td>
-                <td><?=$liste[$i]['Date']?></td>
-                <td align="center"><?php echo afficheHeureMinute($liste[$i]['Recup']);?></td>
-                <td align="center"><?= afficheHeureMinute($liste[$i]['HS_Maj']);?></td>
-                <td align="center"><?=afficheHeureMinute($liste[$i]['JS']);?></td>
-                <td><?=$liste[$i]['Commentaire']?></td>
-                <td><a class="btn btn-primary" href="actionPayeHeure.php?id=<?=$liste[$i]['ID_enr'];?>">Payer</a></td>
+                <td class="tdperso"><?=$liste[$i]['Nom']?></td>
+                <td class="tdperso"><?=$liste[$i]['Date']?></td>
+                <td class="tdperso"><?php echo afficheHeureMinute($liste[$i]['heureAPayer']);?></td>
+                <td class="tdepais"><a class="buttonnormal" href="actionPayeHeure.php?id=<?=$liste[$i]['ID_enr'];?>">Payer</a></td>
                 
 
 

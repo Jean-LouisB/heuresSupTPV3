@@ -11,7 +11,7 @@ $DateFin = $borne2;
 $bornes = $borne1." au ".$borne2;
 ?>
 
-<body class="bodyperso">
+<body class="bodyperso" onload="">
 <?php
 
 if (isset($_POST['matricule'])){
@@ -46,25 +46,25 @@ echo "<p class='valideOK'>Element du ".$dateEvenement." enregistré </p>";
         <input type="text" class="inputInformation" id="matricule" name="matricule" readonly value="<?=$_SESSION['Matricule'];?>">
         <br>
         
-        <label for="date" class="labelForm-perso" id="labeldate">Quelle est la date de l'évènement ?</label>
-        <input type="date" class="form-control-perso"  name="dateEvenement" id="dateEvenement"  min="<?=$tabDate[0]['datedebut'];?>" max="<?=$tabDate[0]['datefin'];?>" required onblur="addClassApresDate()">
+        <label for="date" class="labelForm-perso disparait" id="labeldate">Quelle est la date de l'évènement ?</label>
+        <input type="date" class="form-control-perso disparait"  name="dateEvenement" id="dateEvenement"  min="<?=$tabDate[0]['datedebut'];?>" max="<?=$tabDate[0]['datefin'];?>" required onblur="addClassApresDate()">
         
-        <label for="heuredebut" class="labelForm-perso" id="labelHeureDebut">Quelle est l'heure de début :</label>
-        <input type="time" class="form-control-perso"  name="heureDebut" id="heureDebut" step="900" onblur="addClassApresHeureDebut()">
+        <label for="heuredebut" class="labelForm-perso disparait" id="labelHeureDebut">Quelle est l'heure de début :</label>
+        <input type="time" class="form-control-perso disparait"  name="heureDebut" id="heureDebut" step="900" onblur="addClassApresHeureDebut()">
         
-        <label for="heurefin" class="labelForm-perso" id="labelHeureFin">Quelle est l'heure de fin :</label>
-        <input type="time" class="form-control-perso"  name="heureFin" id="heureFin" step="900" onblur="addClassApresHeureFin()">
+        <label for="heurefin" class="labelForm-perso disparait" id="labelHeureFin">Quelle est l'heure de fin :</label>
+        <input type="time" class="form-control-perso disparait"  name="heureFin" id="heureFin" step="900" onblur="addClassApresHeureFin()">
         
-        <select  aria-label="Default select example" class="form-select-perso" id="sens" name="sens" required onblur="addClassApresSens()">
+        <select  aria-label="Default select example" class="form-select-perso disparait" id="sens" name="sens" required onblur="addClassApresSens()">
                     <option selected>En plus ou en moins ?</option>
                     <option value="1">En plus</option>
                     <option value="2">En moins</option>
         </select> 
         
-        <label for="commentaire" class="labelForm-perso" id="labelCommentaire">Justification :</label>
-        <input type="text" class="form-control-perso"  name="commentaire" id="commentaire" required onblur="addClassTerminer()">
+        <label for="commentaire" class="labelForm-perso disparait" id="labelCommentaire">Justification :</label>
+        <input type="text" class="form-control-perso disparait"  name="commentaire" id="commentaire" required onblur="addClassTerminer()">
        
-        <button class="bouttonValider" type="submit" id="bouttonValider">VALIDER</button>
+        <button class="bouttonValider disparait" type="submit" id="bouttonValider">VALIDER</button>
     </form>
 
 </div>

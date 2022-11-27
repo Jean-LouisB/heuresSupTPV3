@@ -54,11 +54,10 @@
     // la fonction getSoldeHeureUser calcul les totaux des compteurs d'heures validées de l'utilisateur connecté
       function getSoldeHeureUser($Matricule,$pdo){
 
-        $sql = "SELECT SUM(Recup) as TotalRecup, SUM(HS_Maj) as HeuresSupp, Sum(JS) as JourneeSolidarite , sum(heureAPayer) as aPayer
-                FROM stock_hs 
-                WHERE Matricule = :Matricule 
-                AND Validation_Resp = 1
-                AND Apayer =0";
+        $sql = "SELECT SUM(Recup) as TotalRecup, SUM(HS_Maj) as HeuresSupp, Sum(JS) as JourneeSolidarite , H.aPayer as aPayer
+                FROM stock_hs S LEFT JOIN heures_a_payer H ON S.Matricule = H.Matricule
+                WHERE S.Matricule = :Matricule 
+                AND Validation_Resp = 1";
         $stmt = $pdo->prepare($sql);
         $params = ['Matricule' => $Matricule];
         $stmt->execute($params);
@@ -256,7 +255,7 @@
 
     //function GetAValiderV2 récupère les heures à valider et les totaux pour l'administrateur
     function GetAValiderV2Admin($Matricule,$pdo){
-      $sql ="SELECT Nom,Date,TotalRecup,HeuresSupp,JourneeSolidarite,T.Matricule, Recup, HS_Maj, JS,Commentaire, ID_enr, Mat_Resp,ddepaye,S.heureAPayer
+      $sql ="SELECT Nom,Date,TotalRecup,HeuresSupp,JourneeSolidarite,T.aPayer,T.Matricule, Recup, HS_Maj, JS,Commentaire, ID_enr, Mat_Resp,ddepaye,S.heureAPayer
               FROM totauxcompteurs T
               INNER JOIN stock_hs S ON S.Matricule = T.Matricule
               INNER JOIN salaries C on T.Matricule= C.Matricule
@@ -287,8 +286,9 @@
 
         $sql = "SELECT *
                 FROM stock_hs INNER JOIN salaries ON salaries.Matricule = stock_hs.Matricule 
-                WHERE APayer = 1 
+                WHERE Validation_Resp = 1 
                 AND Payee = 0
+                AND heureAPayer > 0
                 ORDER BY Nom, Date";
         $stmt = $pdo->prepare($sql);
       
