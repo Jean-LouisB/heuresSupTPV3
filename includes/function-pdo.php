@@ -379,7 +379,19 @@
         return $result;
     }
 
-
+    function historiqueSemaineEnCours($matricule,$pdo){
+      $sql = "SELECT *
+                FROM semaineencours C 
+                INNER join salaries S
+                ON S.Matricule = C.matricules
+                Where S.Matricule = :matricule
+                ORDER BY C.date_evenement desc";
+        $stmt = $pdo->prepare($sql);
+        $params=['matricule'=> $matricule];
+        $stmt->execute($params);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 
     ?>

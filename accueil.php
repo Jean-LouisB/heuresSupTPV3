@@ -118,10 +118,59 @@ $valide=0;
                   </tbody>
 
           </table>
-          <div class="containerPersoCentrer">
+                </div>
 
+    <?php
 
+    $tabHistorique = historiqueSemaineEnCours($Matricule,$pdo);
 
+    ?>
+<div class="containerpersocourt disparait" id="tabhistorique">
+    <h3>Historique</h3>
+<table class="tableperso">
+    <thead>
+        <tr>
+            <th class="thperso">Date</th>
+            <th class="thperso">durée</th>
+            <th class="thperso">Commentaire</th>
+            <th class="thperso">Etat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        for ($i = 0;$i<count($tabHistorique);$i++){
+            $d1=$tabHistorique[$i]['date_evenement'];
+                $dateEvenement = strftime('%d-%m-%Y',strtotime($d1))
+            ?>
+        <tr>
+            <td class="tdperso"><?=$dateEvenement;?></td>
+            <td class="tdperso"><?=afficheheureminute($tabHistorique[$i]['temps']);?></td>
+            <td class="tdperso"><?=$tabHistorique[$i]['commentaire'];?></td>
+            <td class="tdperso"><?php
+            switch ($tabHistorique[$i]['valide']) {
+                case '0':
+                   echo "En cours";
+                    break;
+                case '1':
+                    echo "Validée";
+                    break;
+                case '2':
+                    echo "En attente de validation";
+                    break;
+                         
+                default:
+                    echo "NA";
+                    break;
+            }
+            ?></td>
+        </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+</table>
+</div>
+</div>
 
 
 
@@ -133,8 +182,10 @@ $valide=0;
         function addClass(){
             let element = (document.getElementById("tableauDetail"));
             let element2= (document.getElementById("tableauSoldes"));
+            let element3= (document.getElementById("tabhistorique"));
             element.classList.add("apparait");
             element2.classList.add("apparait");
+            element3.classList.add("apparait");
        
         }
 
