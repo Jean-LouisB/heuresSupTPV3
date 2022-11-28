@@ -250,6 +250,11 @@ list-style-type: none;
 
 }
 
+.miseEnLumiere{
+  background-color: yellow;
+  color:red;
+}
+
 /******************************************  Tableaux ****************************************/
 
 .tableperso{

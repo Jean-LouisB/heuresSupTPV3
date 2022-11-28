@@ -119,7 +119,7 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
 
   <div class="containerperso">
             <h3>Soldes en début de semaine et affectation</h3>
-<p>Répartissez le solde en l'écrivant en décimal (15mn = 0.25; 30mn = 0.5...) </p>
+<p>Répartissez le solde en l'écrivant en décimal (15mn = 0.25; 30mn = 0.5; 45mn = 0.75) </p>
     <input class="disparait" id="totalEncours" value="<?=$totalHeures[0]['total'];?>">
 
     <form action="cloture.php" method="post">
@@ -134,8 +134,8 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
                           </tr>
                   </thead>
                   <tbody>
-                          <tr>
-                            <td class="tdperso tdepais">Journée de solidarité :</td>
+                          <tr id="alertJS">
+                            <td class="tdperso tdepais"> <span id="titreJS">Journée de solidarité :</span></td>
                             <td class="tdperso tdepais"><?=afficheHeureMinute($soldesInitiaux[0]['JourneeSolidarite']);?></td>
                             <td class="tdperso tdepais"><input type="decimal" class="inputDivers centrer" name="affecJS" id="affecJS" value=0 onblur="reCalcul()"></td>
                           </tr>
@@ -184,11 +184,6 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
           document.getElementById('minuteDecimale').value = endecimaleArrondie;
         }
 
-
-
-
-
-
         function reCalcul(){
 
           var ligne1 = document.getElementById('affecJS').value;
@@ -214,9 +209,16 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
 
 
         }
+    var dateDuJour = new Date();
+    var mois = dateDuJour.getMonth()+1;
+    var soldeJS = <?=$soldesInitiaux[0]['JourneeSolidarite'];?>;
 
 
-
+    if (mois >= 11 && soldeJS < 0){
+      let caseJS = (document.getElementById("alertJS"));
+      document.getElementById("titreJS").innerHTML = "PENSEZ A REALISER LES HEURES DE SOLIDARITE : ";
+      caseJS.classList.add("miseEnLumiere");
+    }
   </script>
 </body>
 
@@ -228,4 +230,3 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
 </footer>
 
 </html>
-
