@@ -72,7 +72,8 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
                   <th scope="col" class="thperso">Date</th>
                   <th scope="col" class="thperso">Durée</th>
                   <th scope="col" class="thperso">Commentaire</th>
-                  <th scope="col" class="thperso"></th>
+                  <th scope="col" class="thperso"><span style="font-size:0.5em;">Modifier</span></th>
+                  <th scope="col" class="thperso"><span style="font-size:0.5em;">Supprimer</span></th>
                   
 
                   
@@ -89,12 +90,13 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
             ?>
             
               <tr>
-                  <?php  ?>
+
                   <td class="tdperso"><?=$listeHeures[$i]['id'];?></td>
                   <td class="tdperso"><?=$dateEvenement;?>
                   <td class="tdperso"><?=afficheHeureMinute($listeHeures[$i]['temps']);?></td>
                   <td class="tdperso"><?=$listeHeures[$i]['commentaire'];?></td>
-                  <td class="tdperso"><a href="modifieheure.php?id=<?=$listeHeures[$i]['id'];?>"><button class="buttonnormal">Modifier</button></a></td>
+                  <td class="tdperso"><a href="modifieheure.php?id=<?=$listeHeures[$i]['id'];?>"><button class="buttonnormal">M</button></a></td>
+                  <td class="tdperso"><a href="supprime.php?id=<?=$listeHeures[$i]['id'];?>"><button class="buttondanger">X</button></a></td>
                   
                 
 
@@ -117,7 +119,7 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
 
   <div class="containerperso">
             <h3>Soldes en début de semaine et affectation</h3>
-
+<p>Répartissez le solde en l'écrivant en décimal (15mn = 0.25; 30mn = 0.5...) </p>
     <input class="disparait" id="totalEncours" value="<?=$totalHeures[0]['total'];?>">
 
     <form action="cloture.php" method="post">
@@ -138,12 +140,12 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
                             <td class="tdperso tdepais"><input type="decimal" class="inputDivers centrer" name="affecJS" id="affecJS" value=0 onblur="reCalcul()"></td>
                           </tr>
                           <tr>
-                            <td class="tdperso tdepais">Conteur de récupération (1 pour 1) :</td>
+                            <td class="tdperso tdepais">Compteur de récupération (1 pour 1) :</td>
                             <td class="tdperso tdepais"><?=afficheHeureMinute($soldesInitiaux[0]['TotalRecup']);?></td>
                             <td class="tdperso tdepais"><input type="decimal" class="inputDivers centrer" name="affecHR" id="affecHR" value=0 onblur="reCalcul()"></td>
                           </tr>
                           <tr>
-                            <td class="tdperso tdepais">Conteur d'heures supplémentaires :</td>
+                            <td class="tdperso tdepais">Compteur d'heures supplémentaires :</td>
                             <td class="tdperso tdepais"><?=afficheHeureMinute($soldesInitiaux[0]['HeuresSupp']);?></td>
                             <td class="tdperso tdepais"><input type="decimal" class="inputDivers centrer" name="affecHS" id="affecHS" value=0 onblur="reCalcul()"></td>
                           </tr>
@@ -167,8 +169,25 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
               <button type="submit" class="buttonnormal masqueObjet" id="bouttonValide">Valider la ventillation</button>
           </div>
   </div>
-
+  <div class="containerpersoaligne">
+    <H3>Calculette mn => décimale</H3>
+          <p>Entrez votre temps en minutes dans le premier cadre ci-dessous,<br> puis appuyez sur la touche "TABULATION" pour obtenir l'équivalent en nombre décimal dans le second :</p>
+          <input type="double" name="nbminutes" id="nbminutes" onblur="calculette()" class="inputDivers" style="text-align:center;"><p> = </p>
+          <input type="double" id="minuteDecimale" class="inputDivers" style="text-align:center;">
+  </div>
   <script>
+
+        function calculette(){
+          var minute = document.getElementById('nbminutes').value;
+          var enDecimale = minute/60;
+          var endecimaleArrondie = enDecimale.toFixed(2);
+          document.getElementById('minuteDecimale').value = endecimaleArrondie;
+        }
+
+
+
+
+
 
         function reCalcul(){
 
@@ -203,7 +222,7 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
 
 <footer>
   <div class="containerPersoCentrer">
-<p>Si vous n'avez pas d'heures à déclarer, valider votre la ventillation pour indiquer le R.A.S.</p>
+<p>Si vous n'avez pas d'heures à déclarer, valider votre la ventillation pour indiquer le "R.A.S.".</p>
 
   </div>
 </footer>

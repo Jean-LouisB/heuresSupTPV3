@@ -48,7 +48,7 @@ $valide=0;
     </div>
 
 <div class="containerperso disparait" id="tableauDetail">    
-    <h3>Détail en attente :</h3>
+    <h3>Détail des heures non clôturées :</h3>
     <table class="tableperso">
 
         <thead>
@@ -85,6 +85,46 @@ $valide=0;
 
     </table>
 </div>
+<hr>
+<div class="containerpersocourt disparait" id="tableauSoldes">
+            <h3>Soldes de vos compteurs :</h3>
+            <p><span style="font-style:italic;">Ne tient pas compte des heures non clôturées.</span></p>
+
+           <table class="tableperso">
+                  <thead>
+                        <tr>
+                            <th class="thperso">Titre</th>
+                            <th class="thperso">Solde</th>
+                        </tr>
+                  </thead>
+                  <tbody>
+                          <tr>
+                            <td class="tdperso tdepais">Journée de solidarité :</td>
+                            <td class="tdperso tdepais"><?=$JS;?></td>
+                          </tr>
+                          <tr>
+                            <td class="tdperso tdepais">Compteur de récupération (1 pour 1) :</td>
+                            <td class="tdperso tdepais"><?=$HR;?></td>
+                          </tr>
+                          <tr>
+                            <td class="tdperso tdepais">Compteur d'heures supplémentaires :</td>
+                            <td class="tdperso tdepais"><?=$HS;?></td>
+                          </tr>
+                          <tr>
+                            <td class="tdperso tdepais">A payer</td>
+                            <td class="tdperso tdepais"><?=$HP;?></td>
+                          </tr>
+  
+                  </tbody>
+
+          </table>
+          <div class="containerPersoCentrer">
+
+
+
+
+
+
 <script>
 
         var tempo = setTimeout(addClass, 600);
@@ -92,9 +132,10 @@ $valide=0;
                                             
         function addClass(){
             let element = (document.getElementById("tableauDetail"));
+            let element2= (document.getElementById("tableauSoldes"));
             element.classList.add("apparait");
+            element2.classList.add("apparait");
        
-
         }
 
 </script>

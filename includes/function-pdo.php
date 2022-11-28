@@ -136,12 +136,11 @@
 
     //Fonction pour voir le nombre d'heures à payer
       function getDetailHeureApayerUser($Matricule,$pdo){
-        $sql = "SELECT SUM(HS_Maj) as HeuresAPayer
+        $sql = "SELECT SUM(heureAPayer) as HeuresAPayer
         FROM stock_hs 
         WHERE Matricule = :Matricule 
         AND Validation_Resp = 1
-        AND Payee = 0
-        AND Apayer =1";
+        AND Payee = 0";
         $stmt = $pdo->prepare($sql);
         $params = ['Matricule' => $Matricule];
         $stmt->execute($params);
@@ -208,11 +207,10 @@
     // La fonction apercuSemaine permet au directeur de consulter l'ensemble des événements sur une période donnée.
     function apercuSemaine($borne1,$borne2,$pdo){
 
-          $sql ="SELECT * FROM stock_hs
-                INNER JOIN salaries ON salaries.Matricule = stock_hs.Matricule
-                WHERE stock_hs.Date >=:borne1
-                AND stock_hs.Date <=:borne2
-                AND Commentaire <> 'Initialisation'
+          $sql ="SELECT * FROM semaineencours
+                INNER JOIN salaries ON salaries.Matricule = semaineencours.matricules
+                WHERE semaineencours.date_evenement >=:borne1
+                AND semaineencours.date_evenement <=:borne2
                 ORDER BY Nom";
           $stmt = $pdo->prepare($sql);
           $params = ['borne1'=> $borne1, 'borne2' => $borne2];
@@ -224,7 +222,7 @@
 
     //fonction toutTotaux permet de récupérer tous les totaux de chaque salarié présent
     function toutTotaux($pdo){
-      $sql = "SELECT concat(Prenom,' ',Nom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite
+      $sql = "SELECT concat(Prenom,' ',Nom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite, sum(heureAPayer) as heureapayer
                 FROM stock_hs INNER JOIN salaries ON stock_hs.Matricule = salaries.Matricule
                 Where Validation_Resp = 1
                 AND Apayer =0
@@ -371,7 +369,7 @@
                 FROM semaineencours C 
                 INNER join salaries S
                 ON S.Matricule = C.matricules
-                WHERE c.valide = 0 
+                WHERE C.valide = 0 
                 AND S.Matricule = :matricule
                 ORDER BY S.Nom";
         $stmt = $pdo->prepare($sql);

@@ -1,12 +1,7 @@
 /*conteneur personnalisé non aligné*/
 
-.containerperso,
-.containerperso-fluid,
-.containerperso-sm,
-.containerperso-md,
-.containerperso-lg,
-.containerperso-xl {
-  width: 50%;
+.containerperso{
+  width: 70%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -18,6 +13,16 @@
 .containerPersoCentrer{
 display: flex;
 justify-content: center;
+}
+
+.containerpersocourt{
+  width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 576px) {
@@ -140,10 +145,7 @@ list-style-type: none;
 
 }
 
-.tdperso{
-text-align: center;
 
-}
 
 /************************************************************************************************************/
 /******************************************  Ajout pour la Version 3 ****************************************/
@@ -166,6 +168,21 @@ text-align: center;
   color: white;
 
 }
+
+.buttondanger{
+  border:none;
+  border-radius: 3px;
+  background:linear-gradient(to right, #ff2c2c,grey);
+  box-shadow: 2px 2px 2px grey;
+  width: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  color:yellow;
+
+}
+
+
 
 .inputDivers{
   border: none;
@@ -258,9 +275,8 @@ thead{
 
   border: 1px solid rgb(32, 100, 248);
   text-align: center;
-
-
 }
+
 .tdepais{
   border: 1px solid rgb(32, 100, 248);
   text-align: center;

@@ -33,7 +33,7 @@ if (isset($_POST['matricule'])){
                         }
                                           
                 $ajoute = addHeureV3($bornes,$matricule,$dateEvenement,$dureeEvenement,$commentaire,$pdo);
-echo "<p class='valideOK'>Element du ".$dateEvenement." enregistré </p>";
+echo "<div class='containerpersocourt'><p class='valideOK'>Evénement du ".$dateEvenement." enregistré. </p></div>";
 }
 
 
@@ -41,6 +41,7 @@ echo "<p class='valideOK'>Element du ".$dateEvenement." enregistré </p>";
 
 <div class="containerperso">
 <H3>Semaine du <?=$bornes;?></H3>
+<p>Utiliser la touche "TABULATION" pour naviguer et valider vos réponses.</p>
 <form action="enregistre.php" method="post">
         
         <input type="text" class="inputInformation" id="matricule" name="matricule" readonly value="<?=$_SESSION['Matricule'];?>">

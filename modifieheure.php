@@ -41,7 +41,7 @@ $newCommentaire = $_POST['comment']." || Enregistrement Modifié le ".$maintenan
 ?>
 
 <body class="bodyperso">
-<div class="container">
+<div class="containerpersocourt">
 
 
         <form action="modifieheure.php" method="post">

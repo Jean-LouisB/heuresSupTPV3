@@ -4,7 +4,7 @@
 
 //session locale:
 
-session_start();
+ session_start();
 $dsn='mysql:host=localhost;dbname=heurestp';
 $user='root';
 $pass='';
@@ -22,8 +22,8 @@ $pass='Ar17xaxMna';
 $pdo = new \PDO($dsn, $user, $pass);
 $pdo->exec("SET CHARACTER SET utf8");
 $nomSession ="";
-
 */
+
 $date_Sys = date('Y-m-d');
 
 

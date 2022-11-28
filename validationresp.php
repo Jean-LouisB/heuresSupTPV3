@@ -16,7 +16,7 @@ if (isset($_POST['salarie'])){
   $Matr = $_POST['salarie'];
 $valide = 2;
 $listeHeures = GetAValiderV2($Matr,$pdo);
-$listeHeuresSemaine = heuresEnCoursResponsable($Matricule,$pdo);
+$listeHeuresSemaine = heuresEnCoursResponsable($Matr,$pdo);
 $totalHeures = heuresEnCoursTotal($Matricule,$valide,$pdo);
 }
 
@@ -44,7 +44,7 @@ $totalHeures = heuresEnCoursTotal($Matricule,$valide,$pdo);
      
                       </div>
 
-                      <button type="submit" class="btn btn-primary">Filtrer</button>
+                      <button type="submit" class="bouttonValider">Filtrer</button>
 
 
                 </form>
@@ -95,8 +95,8 @@ if (isset($listeHeures[0]['Prenom'])){
       <td style="text-align:center; border-left:solid; border-width:1px;"><?=afficheHeureMinute($listeHeures[$i]['heureAPayer']);?></td>
       <td style="text-align:center; border-right:solid; border-width:1px;"><?=afficheHeureMinute($listeHeures[$i]['aPayer']);?></td>
       
-      <td><a class="btn btn-primary" href="actionOKHeure.php?id=<?=$listeHeures[$i]['ID_enr'];?>&matricule=<?=$listeHeures[$i]['Matricule'];?>">Valider</a></td>
-      <td><a class="btn btn-danger" href="actionAnnulerHeure.php?id=<?=$listeHeures[$i]['ID_enr'];?> & nom=<?=$listeHeures[$i]['Nom'];?>">Annuler</a></td>
+      <td><a class="buttonnormal" href="actionOKHeure.php?id=<?=$listeHeures[$i]['ID_enr'];?>&matricule=<?=$listeHeures[$i]['Matricule'];?>">Valider</a></td>
+      <td><a class="buttondanger" href="actionAnnulerHeure.php?id=<?=$listeHeures[$i]['ID_enr'];?> & nom=<?=$listeHeures[$i]['Nom'];?>">Annuler</a></td>
       
 
 

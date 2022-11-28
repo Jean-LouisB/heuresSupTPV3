@@ -15,22 +15,21 @@ $touToto = toutTotaux($pdo);
 
 <body class="bodyperso">
   <div class="containerperso">
-     <H2 style="text-align:center;">Aperçu détaillé de la semaine <br>du <?=$borne1;?> au <?=$borne2;?></H2>
+     <H2>Aperçu détaillé de la semaine du <?=$borne1;?> au <?=$borne2;?></H2>
   </div>
 
-  <div style="margin:10px;">
+  <div class="containerperso">
+  <p>En cours = L'heure n'a pas encore été ventilée par le salarié.<br>Validée = L'heure est validée par le responsable.<br>En attente = l'heure est ventillée et en attente de validation par le responsable</p>
+
       <table class="table">
         <thead>
           <tr>
             
-            <th scope="col">Nom</th>
-            <th scope="col">Prénom</th>
-            <th scope="col">Date</th>
-            <th scope="col" colspan="2" style="border-left:solid;border-right:solid; border-width:1px; text-align:center;">Récupération<br><font style="font-size:0.8em;">Nouvelle / solde initial</font></th>
-            <th scope="col" colspan="2" style="border-left:solid;border-right:solid; border-width:1px; text-align:center;">Heures supp.<br><font style="font-size:0.8em;">Nouvelle / solde initial</font></th>
-            <th scope="col">Solidatrité</th>
-            <th scope="col">A payer?</th>
-            <th scope="col">Justificatif</th>
+            <th scope="col" class="thperso" style="width:20%;">Nom Prénom</th>
+            <th scope="col" class="thperso" style="width:15%;">Date</th>
+            <th scope="col" class="thperso" style="width:15%;">Durée</th>
+            <th scope="col" class="thperso" style="width:40%;">Justificatif</th>
+            <th scope="col" class="thperso" style="width:10%;">Etat</th>
 
           </tr>
         </thead>
@@ -45,12 +44,11 @@ $touToto = toutTotaux($pdo);
       
         <tr>
 
-            <td><?=$apercuTotal[$i]['Nom'];?></td>
-            <td><?=$apercuTotal[$i]['Prenom'];?></td>
-            <td>
+            <td class="tdperso"><?=$apercuTotal[$i]['Nom']." ".$apercuTotal[$i]['Prenom'];?></td>
+            <td class="tdperso">
               <?php
             
-                $DateMvt = date($apercuTotal[$i]['Date']);
+                $DateMvt = date($apercuTotal[$i]['date_evenement']);
                 $DateReport = DateTime::createFromFormat('Y-m-d', $DateMvt);
                 echo $DateReport->format('d/m/Y');
               
@@ -58,13 +56,27 @@ $touToto = toutTotaux($pdo);
               ?>
                       
             </td>
-            <td style="text-align:center; border-left:solid; border-width:1px;"><?=afficheHeureMinute($apercuTotal[$i]['Recup']);?></td>
-            <td style="text-align:center; border-right:solid; border-width:1px;">Solde à calculer</td>
-            <td style="text-align:center; border-left:solid; border-width:1px;"><?=afficheHeureMinute($apercuTotal[$i]['HS_Maj']);?></td>
-            <td style="text-align:center; border-right:solid; border-width:1px;">Solde à calculer</td>
-            <td class="tdperso"><?=afficheHeureMinute($apercuTotal[$i]['JS']);?></td>
-            <td><?=$apercuTotal[$i]['ddepaye'];?></td>
-            <td><?=$apercuTotal[$i]['Commentaire'];?></td>
+            <td class="tdperso"><?=afficheHeureMinute($apercuTotal[$i]['temps']);?></td>
+            <td class="tdperso"><?=$apercuTotal[$i]['commentaire'];?></td>
+            <td class="tdperso"><?php
+              switch ($apercuTotal[$i]['valide']) {
+                case '0':
+                  echo "En cours";
+                  break;
+                case '1':
+                  echo "Validée";
+                  break;
+                case '2':
+                  echo "En attente";
+                  break;
+                    
+                default:
+                  echo "NA";
+
+                  break;
+              }
+
+            ;?></td>
 
           
 
@@ -83,17 +95,18 @@ $touToto = toutTotaux($pdo);
   <br>
 
   <div class="containerperso">
-     <H2 style="text-align:center;">Totaux des compteurs par personne</H2>
+     <H2>Totaux des compteurs par personne.</H2>
   </div>
 
-  <div class="containerperso">
-          <table class="table">
+  <div class="containerperso" style="width:50%;">
+          <table class="tableperso">
 
                   <thead>
-                      <th scope="col">Nom</th>
-                      <th scope="col">Compteur Récupération</th>
-                      <th scope="col">Compteur Heures supp.</th>
-                      <th scope="col">Solidarité.</th>
+                      <th class="thperso" style="width:40%" scope="col">Nom</th>
+                      <th class="thperso" style="width:15%" scope="col">Compteur Récupération</th>
+                      <th class="thperso" style="width:15%" scope="col">Compteur Heures supp.</th>
+                      <th class="thperso" style="width:15%" scope="col">Solidarité.</th>
+                      <th class="thperso" style="width:15%" scope="col">A payer.</th>
 
                   </thead>
           
@@ -105,10 +118,11 @@ $touToto = toutTotaux($pdo);
                           for($i=0;$i< count($touToto);$i++){
                               
                           ?>
-                                  <td><?=$touToto[$i]['PrenomNom'];?></td>
+                                  <td class="tdperso"><?=$touToto[$i]['PrenomNom'];?></td>
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['TotalRecup']);?></td>
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['HeuresSupp']);?></td>
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['JourneeSolidarite']);?></td>
+                                  <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['heureapayer']);?></td>
 
                       </tr>
 
