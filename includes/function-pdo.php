@@ -222,7 +222,7 @@
 
     //fonction toutTotaux permet de récupérer tous les totaux de chaque salarié présent
     function toutTotaux($pdo){
-      $sql = "SELECT concat(Prenom,' ',Nom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite, sum(heureAPayer) as heureapayer
+      $sql = "SELECT concat(Nom,' ',Prenom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite, sum(heureAPayer) as heureapayer
                 FROM stock_hs INNER JOIN salaries ON stock_hs.Matricule = salaries.Matricule
                 Where Validation_Resp = 1
                 AND Apayer =0
