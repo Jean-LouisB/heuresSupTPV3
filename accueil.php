@@ -126,7 +126,7 @@ $valide=0;
 
     ?>
 <div class="containerpersocourt disparait" id="tabhistorique">
-    <h3>Historique</h3>
+    <h3>Historique : </h3>
 <table class="tableperso">
     <thead>
         <tr>

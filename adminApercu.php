@@ -95,7 +95,8 @@ $touToto = toutTotaux($pdo);
   <br>
 
   <div class="containerperso">
-     <H2>Totaux des compteurs par personne.</H2>
+     <H2>Soldes initiaux des compteurs par personne.</H2>
+     <p>Ce tableau ne tient pas compte des mouvements du tableau précédent.</p>
   </div>
 
   <div class="containerperso" style="width:50%;">
