@@ -65,7 +65,7 @@ echo "<div class='containerpersocourt'><p class='valideOK'>Evénement du ".$date
         <label for="commentaire" class="labelForm-perso disparait" id="labelCommentaire">Justification :</label>
         <input type="text" class="form-control-perso disparait"  name="commentaire" id="commentaire" required onblur="addClassTerminer()">
        
-        <button class="bouttonValider disparait" type="submit" id="bouttonValider">VALIDER</button>
+        <button class="bouttonValider masqueObjet" type="submit" id="bouttonValider">VALIDER</button>
     </form>
 
 </div>
@@ -130,7 +130,7 @@ echo "<div class='containerpersocourt'><p class='valideOK'>Evénement du ".$date
 
                                       function addClassTerminer(){
                                         let element = (document.getElementById("bouttonValider"));
-                                        element.classList.add("apparait");
+                                        element.classList.add("afficheObjet");
                                         console.log("Voila la fin");
 
                                       }
