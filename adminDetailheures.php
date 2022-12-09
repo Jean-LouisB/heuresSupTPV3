@@ -96,6 +96,7 @@ if (!empty($_POST['salarie'])){
       <th scope="col">Heures à payées (non majorée)</th>
       <th scope="col">Justification</th>
       <th scope="col">validée le</th>
+      <th scope="col"></th>
 
     </tr>
   </thead>
@@ -145,6 +146,8 @@ if (!empty($_POST['salarie'])){
       
     
     </td>
+    <td style="text-align:center;"><a href="modifieheurearchive.php?id=<?=$liste[$i]['ID_enr'];?>"><button>Modifier</button></a></td>
+
     </tr>
   
 <?php 
@@ -157,6 +160,8 @@ if (!empty($_POST['salarie'])){
 </tbody>
 </table>
 </div>
+
+
 </body>
 
 <footer>

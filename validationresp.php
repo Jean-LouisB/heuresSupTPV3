@@ -11,9 +11,18 @@ $droit = $user[0]['Type'];//Pour définir sont niveau de droit
 $matriculeResponsable = $user[0]['Matricule'];
 
 //Pour définir le salarié filtré
+
+
 $listesalaries = getSalarieService($matriculeResponsable,$pdo);
 if (isset($_POST['salarie'])){
   $Matr = $_POST['salarie'];
+$valide = 2;
+$listeHeures = GetAValiderV2($Matr,$pdo);
+$listeHeuresSemaine = heuresEnCoursResponsable($Matr,$pdo);
+$totalHeures = heuresEnCoursTotal($Matricule,$valide,$pdo);
+}
+if (isset($_GET['matricule'])){
+  $Matr = $_GET['matricule'];
 $valide = 2;
 $listeHeures = GetAValiderV2($Matr,$pdo);
 $listeHeuresSemaine = heuresEnCoursResponsable($Matr,$pdo);

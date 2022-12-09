@@ -29,7 +29,7 @@ function archiveDetailSemaine($matricule,$pdo){
 }
 
 
-header('Location: validationresp.php');
+header('Location: validationresp.php?matricule='.$matricule);
 
 ?>
 </html>

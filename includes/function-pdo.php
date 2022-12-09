@@ -393,5 +393,17 @@
         return $result;
     }
 
+    // la fonction getHeure récupère les infos d'une heure définie par $idheure
+  function getHeureArchive($idheure,$pdo){
+
+    $sql = "SELECT *
+            FROM stock_hs 
+            WHERE ID_enr = :idheure";
+    $stmt = $pdo->prepare($sql);
+    $params = ['idheure' => $idheure];
+    $stmt->execute($params);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+   }
 
     ?>
