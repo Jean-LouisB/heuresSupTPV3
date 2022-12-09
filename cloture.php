@@ -7,7 +7,7 @@ if (!isset($_SESSION['Matricule'])){ //vérifie si l'utilisateur est connecté
 $matricule = $Matricule;
 //$Matricule = $_SESSION['Matricule']; // Récupère le matricule de l'utilisateur connecté..../// Déjà fait dans navbar.php en include
 $user = getUserConnect($Matricule,$pdo);//puis récupère les données le concernant
-
+$actionFaiteOk = 0;
 
 if (isset($_POST['affecHS'])){
     $DateDebut = $borne1;
@@ -18,6 +18,7 @@ if (isset($_POST['affecHS'])){
     $affecHS=$_POST['affecHS']*1.25;
     $aPayer=$_POST['aPayer'];
     $commentaire='Arbitrage de la semaine du '.$bornes;
+    $actionFaiteOk = 1;
 
 function addHeureSemaine($Matricule,$affecJS,$affecHR,$affecHS,$aPayer,$date_Sys,$commentaire,$pdo){
 
@@ -219,6 +220,14 @@ $archiveHeure = archiveHeureSemaine($Matricule,$pdo);
       document.getElementById("titreJS").innerHTML = "PENSEZ A REALISER LES HEURES DE SOLIDARITE : ";
       caseJS.classList.add("miseEnLumiere");
     }
+
+   var interupteur = <?=$actionFaiteOk;?>;
+   if (interupteur == 1){
+    alert("CLOTURE HEBDOMADAIRE BIEN ENREGISTREE");
+    window.location = "accueil.php";
+
+   }
+
   </script>
 </body>
 
