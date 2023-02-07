@@ -107,7 +107,7 @@ $touToto = toutTotaux($pdo);
                       <th class="thperso" style="width:15%" scope="col">Compteur Récupération</th>
                       <th class="thperso" style="width:15%" scope="col">Compteur Heures supp.</th>
                       <th class="thperso" style="width:15%" scope="col">Solidarité.</th>
-                      <th class="thperso" style="width:15%" scope="col">A payer.</th>
+                     <!--  <th class="thperso" style="width:15%" scope="col">A payer.</th> -->
 
                   </thead>
           
@@ -123,7 +123,7 @@ $touToto = toutTotaux($pdo);
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['TotalRecup']);?></td>
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['HeuresSupp']);?></td>
                                   <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['JourneeSolidarite']);?></td>
-                                  <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['heureapayer']);?></td>
+                                  <!-- <td class="tdperso"><?=afficheHeureMinute($touToto[$i]['heureapayer']);?></td> -->
 
                       </tr>
 

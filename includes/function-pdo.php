@@ -222,10 +222,9 @@
 
     //fonction toutTotaux permet de récupérer tous les totaux de chaque salarié présent
     function toutTotaux($pdo){
-      $sql = "SELECT concat(Nom,' ',Prenom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite, sum(heureAPayer) as heureapayer
+      $sql = "SELECT concat(Nom,' ',Prenom) as PrenomNom, SUM(stock_hs.Recup) as TotalRecup, SUM(stock_hs.HS_Maj) as HeuresSupp, Sum(stock_hs.JS) as JourneeSolidarite
                 FROM stock_hs INNER JOIN salaries ON stock_hs.Matricule = salaries.Matricule
                 Where Validation_Resp = 1
-                AND Apayer =0
                 AND salaries.Present = 1
                 AND annulee = 0
                 GROUP BY PrenomNom";
@@ -234,6 +233,8 @@
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
+
 
     //function GetAValiderV2 récupère les heures à valider et les totaux
     function GetAValiderV2($Matricule,$pdo){
@@ -287,7 +288,7 @@
                 FROM stock_hs INNER JOIN salaries ON salaries.Matricule = stock_hs.Matricule 
                 WHERE Validation_Resp = 1 
                 AND Payee = 0
-                AND heureAPayer > 0
+                AND heureAPayer <> 0
                 ORDER BY Nom, Date";
         $stmt = $pdo->prepare($sql);
       
