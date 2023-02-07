@@ -5,7 +5,7 @@
 //session locale:
 
  session_start();
-$dsn='mysql:host=localhost;dbname=heurestp';
+$dsn='mysql:host=localhost;dbname=fabrickopf';
 $user='root';
 $pass='';
 $nomSession ="Session locale";

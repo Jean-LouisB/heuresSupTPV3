@@ -227,6 +227,7 @@
                 Where Validation_Resp = 1
                 AND Apayer =0
                 AND salaries.Present = 1
+                AND annulee = 0
                 GROUP BY PrenomNom";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
@@ -393,7 +394,7 @@
         return $result;
     }
 
-    // la fonction getHeure récupère les infos d'une heure définie par $idheure
+    // la fonction getHeureArchive récupère les infos d'une heure définie par $idheure
   function getHeureArchive($idheure,$pdo){
 
     $sql = "SELECT *
@@ -406,4 +407,19 @@
     return $result;
    }
 
-    ?>
+   function historiqueDetailSemaine($matricule,$pdo){
+    $sql = "SELECT *
+              FROM semaineencours C 
+              INNER join salaries S
+              ON S.Matricule = C.matricules
+              Where S.Matricule = :matricule
+              ORDER BY C.date_evenement desc";
+      $stmt = $pdo->prepare($sql);
+      $params=['matricule'=> $matricule];
+      $stmt->execute($params);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+  }
+
+
+?>

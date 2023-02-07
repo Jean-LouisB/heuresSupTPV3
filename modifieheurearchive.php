@@ -64,21 +64,21 @@ if (count($_POST)>0){
                             <div class="containerperso">
                             <label for="recup">Contingent de récupération (1 pou 1) :</label>
                             <p style="font-size:0.8em;"><i>valeur inscrite en décimale : 15mn = 0,25 | 30mn = 0,50 | 45mn = 0,75.</i></p>
-                            <input required type="number" class="form-control"  name="recup" id="recup" value="<?=$heureACorriger[0]['Recup']?>">
+                            <input required type="double" class="form-control"  name="recup" id="recup" value="<?=$heureACorriger[0]['Recup']?>">
                             </div>
                             
                             <div class="containerperso">
                             <label for="JS">Contingent d'heures supplémentaires :</label>
                             <p style="font-size:0.8em;"><i>valeur inscrite en décimale : 15mn = 0,25 | 30mn = 0,50 | 45mn = 0,75. Ne les majorez pas.</i></p>
-                            <input required type="number" class="form-control" name="hsupp" id="hsupp" value="<?=$heureACorriger[0]['HS_Maj']?>">
+                            <input required type="double" class="form-control" name="hsupp" id="hsupp" value="<?=$heureACorriger[0]['HS_Maj']?>">
                             </div>
                             <div class="containerperso">
                             <label for="hsupp">Journée de solidarité :</label>
-                            <input required type="number" class="form-control" name="JS" id="JS" value="<?=$heureACorriger[0]['JS']?>">
+                            <input required type="double" class="form-control" name="JS" id="JS" value="<?=$heureACorriger[0]['JS']?>">
                             </div>
                             <div class="containerperso">
                             <label for="hsupp">Heure à payer :</label>
-                            <input required type="number" class="form-control" name="hap" id="hap" value="<?=$heureACorriger[0]['heureAPayer']?>">
+                            <input required type="double" class="form-control" name="hap" id="hap" value="<?=$heureACorriger[0]['heureAPayer']?>">
                             </div>
                             <div class="containerperso">
                             <label for="comment">Commentaire (yc tranche horaire)</label>

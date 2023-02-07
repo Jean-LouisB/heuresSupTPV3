@@ -52,6 +52,7 @@ if ($niveauUserConnecte > 2){//affiche cette partie si l'utilisateur est adminis
   <a class="nav-link dropdown-toggle" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Administrateur</a>
     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
       <li><a class="nav-link" style="color: blue" href="adminDetailheures.php">Détail</a></li>
+      <li><a class="nav-link" style="color: blue" href="adminDetailHeuresSem.php">Détail Semaine</a></li>
       <li><a class="nav-link" style="color: blue" href="adminApercu.php">Aperçu de la semaine</a></li>
       <li><a class="nav-link" style="color: blue" href="adminApayer.php">A payer</a></li>
       <li><hr class="dropdown-divider">Paramètres :</li>
