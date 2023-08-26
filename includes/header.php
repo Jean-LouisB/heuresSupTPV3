@@ -16,9 +16,9 @@ setlocale(LC_TIME, "FR_fr");
 //session distante
 /*
 session_start();
-$dsn='mysql:host=fabrickopf.mysql.db;dbname=fabrickopf';
-$user='fabrickopf';
-$pass='Ar17xaxMna';
+$dsn='mysql:host=*****************.mysql.db;dbname=**************';
+$user='****************';
+$pass='***********************';
 $pdo = new \PDO($dsn, $user, $pass);
 $pdo->exec("SET CHARACTER SET utf8");
 $nomSession ="";
